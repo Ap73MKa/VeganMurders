@@ -1,0 +1,6 @@
+# Engine
+pygame
+
+# Debug
+loguru
+pylint_runner
