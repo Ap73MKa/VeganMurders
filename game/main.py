@@ -1,5 +1,6 @@
 import pygame as pg
 from pygame import display, event, time
+
 from game import Config
 from game.groups import DebugGroup, GroupManager
 from game.misc.utils import Coord
@@ -13,6 +14,7 @@ class Game:
         pg.init()
         self.screen = display.set_mode((1280, 720))
         self.__game_over = False
+        self.delta = 0
         self.__clock = time.Clock()
 
         self.__all_groups = GroupManager(
@@ -32,7 +34,7 @@ class Game:
         display.flip()
 
     def update(self):
-        self.scene.update()
+        self.scene.update(delta=self.delta)
         self.__all_groups.update()
 
     def run(self) -> None:
@@ -40,5 +42,5 @@ class Game:
             self.event()
             self.update()
             self.draw()
-            self.__clock.tick(Config.FPS)
+            self.delta = self.__clock.tick_busy_loop(Config.FPS) / 1000
         pg.quit()
