@@ -7,19 +7,20 @@ from game.sprites.player import Player
 class MainScene(BaseScene):
 
     def _setup_objects(self) -> None:
-        self.player = Player()
-        self.enemy = Enemy()
+        self.__player = Player()
+        self.__enemy = Enemy()
 
-        self.player_group = Group(
-            self.player,
+        self.__player_group = Group(
+            self.__player,
         )
-        self.enemy_group = Group(
+        self.__enemy_group = Group(
             Enemy(),
         )
 
-    def _load_groups(self) -> None:
-        yield self.player_group
-        yield self.enemy_group
+    def _load_groups(self):
+        yield self.__player_group
+        yield self.__enemy_group
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
+        pass

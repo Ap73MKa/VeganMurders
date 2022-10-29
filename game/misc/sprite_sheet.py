@@ -20,7 +20,6 @@ def advanced_sprite_slice(image, size: tuple[int, int], scale: int | float = 1):
     frames = []
     res = image.get_width() / size[0], image.get_height() / size[1]
     for i in range(size[0]):
-        print(i, 0, i*res[0], image.get_width(), res[1])
         frame = image.subsurface((0, i * res[1], image.get_width(), res[1]))
         frames.append(sprite_slice(frame, size[0], scale))
     return tuple(frames)

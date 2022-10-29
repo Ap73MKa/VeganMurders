@@ -11,7 +11,7 @@ class FpsView(pg.sprite.Sprite):
     def __init__(self, clock, pos: Coord, size=35):
         super().__init__()
         self.__clock = clock
-        self.text = Text('FPS: ', pos, size)
+        self.text = Text('FPS: ', pos, size, background='black')
 
     def update(self, *args: Any, **kwargs: Any) -> None:
         self.text.set_text(f'FPS: {int(self.__clock.get_fps())}')

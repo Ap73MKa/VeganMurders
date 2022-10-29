@@ -1,6 +1,4 @@
 import pygame as pg
-from pygame.rect import Rect
-
 from game.misc.animator import Animator
 
 
@@ -14,19 +12,20 @@ class SpriteSheetAnimator(Animator):
         self.__line_index = 0
         super().__init__(self.__sheet[0], time_out, repeat)
 
-    def get_rect(self, **kwargs) -> Rect:
-        return self.current_image.get_rect(**kwargs)
+    @property
+    def image(self) -> pg.Surface:
+        return self.__sheet[self.__line_index][int(self.current_index)]
 
     @property
-    def rotate(self) -> int:
+    def line(self) -> int:
         return self.__line_index
 
-    @rotate.setter
-    def rotate(self, value: int) -> None:
+    @line.setter
+    def line(self, value: int) -> None:
         if abs(value) > self.lines:
             raise Exception
         self.__line_index = abs(value)
 
-    @property
-    def current_image(self) -> pg.Surface:
-        return self.__sheet[self.__line_index][self.current_index]
+    def reset(self) -> None:
+        self.__line_index = 0
+        super().reset()
