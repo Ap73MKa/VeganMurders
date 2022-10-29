@@ -1,7 +1,8 @@
 from os import getenv
+from typing import Final
 
 
 class Config:
-    RESOLUTION = 1920, 1080
-    FPS: int = 60
-    DEBUG: bool = bool(getenv('DEBUG', ''))
+    FPS: Final = 60
+    RESOLUTION: Final = 1920, 1080
+    DEBUG: Final = bool(getenv('DEBUG', ''))

@@ -11,8 +11,7 @@ class MainScene(BaseScene):
         self.enemy = Enemy()
 
         self.player_group = Group(
-            Player(),
-
+            self.player,
         )
         self.enemy_group = Group(
             Enemy(),

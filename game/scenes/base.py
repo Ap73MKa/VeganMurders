@@ -32,7 +32,7 @@ class BaseScene:
         self._all_groups.update(*args, **kwargs)
 
     def draw(self) -> Surface:
-        self._screen.fill('black')
+        self._screen.fill('yellow')
         self._all_groups.draw(self._screen)
         return self._screen
 
